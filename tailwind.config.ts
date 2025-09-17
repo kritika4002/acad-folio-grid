@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -38,6 +39,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -46,6 +48,21 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        // Academic subject colors
+        subject: {
+          math: "hsl(var(--subject-math))",
+          science: "hsl(var(--subject-science))",
+          english: "hsl(var(--subject-english))",
+          history: "hsl(var(--subject-history))",
+          art: "hsl(var(--subject-art))",
+          pe: "hsl(var(--subject-pe))",
+        },
+        // Calendar specific colors
+        calendar: {
+          today: "hsl(var(--calendar-today))",
+          selected: "hsl(var(--calendar-selected))",
+          hover: "hsl(var(--calendar-hover))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

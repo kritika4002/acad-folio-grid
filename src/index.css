@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Academic Timetable Scheduler Design System - Dark Theme
+All colors MUST be HSL for consistency and theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark academic theme */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Academic blue as primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 5%;
+    --primary-glow: 217 91% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Professional gray secondary */
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 222 47% 10%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Purple accent for highlights */
+    --accent: 262 83% 65%;
+    --accent-foreground: 222 47% 5%;
+    --accent-glow: 262 83% 75%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 222 47% 15%;
+    --input: 222 47% 12%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Calendar specific colors */
+    --calendar-today: 217 91% 60%;
+    --calendar-selected: 262 83% 65%;
+    --calendar-hover: 222 47% 18%;
+
+    /* Subject color palette */
+    --subject-math: 200 98% 65%;
+    --subject-science: 142 76% 55%;
+    --subject-english: 262 83% 65%;
+    --subject-history: 25 85% 60%;
+    --subject-art: 310 80% 70%;
+    --subject-pe: 110 70% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(262 83% 65%));
+    --gradient-card: linear-gradient(145deg, hsl(222 47% 8%), hsl(222 47% 10%));
+    --gradient-subtle: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 6%));
+
+    /* Shadows and effects */
+    --shadow-elegant: 0 20px 40px -12px hsl(222 47% 2% / 0.8);
+    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.3);
+    --shadow-card: 0 8px 25px -8px hsl(222 47% 2% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +134,69 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Calendar grid styling */
+  .calendar-grid {
+    @apply grid grid-cols-7 gap-1 p-4;
+  }
+
+  .calendar-day {
+    @apply aspect-square flex items-center justify-center rounded-lg text-sm font-medium cursor-pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .calendar-day:hover {
+    @apply bg-[hsl(var(--calendar-hover))];
+  }
+
+  .calendar-day.today {
+    @apply bg-primary text-primary-foreground shadow-[var(--shadow-glow)];
+  }
+
+  .calendar-day.selected {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  /* Subject color classes */
+  .subject-math { @apply bg-[hsl(var(--subject-math))] text-[hsl(var(--background))]; }
+  .subject-science { @apply bg-[hsl(var(--subject-science))] text-[hsl(var(--background))]; }
+  .subject-english { @apply bg-[hsl(var(--subject-english))] text-[hsl(var(--background))]; }
+  .subject-history { @apply bg-[hsl(var(--subject-history))] text-[hsl(var(--background))]; }
+  .subject-art { @apply bg-[hsl(var(--subject-art))] text-[hsl(var(--background))]; }
+  .subject-pe { @apply bg-[hsl(var(--subject-pe))] text-[hsl(var(--background))]; }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-spring {
+    transition: var(--transition-spring);
   }
 }
