@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import TimetableCalendar from "./TimetableCalendar";
 import Sidebar from "./Sidebar";
+import AdminDashboard from "./AdminDashboard";
 
 type ViewMode = "student" | "faculty" | "admin";
 type CalendarView = "week" | "month";
@@ -27,6 +28,11 @@ const Dashboard = () => {
     faculty: { totalClasses: 32, scheduled: 28, pending: 4, students: "156" },
     admin: { totalUsers: 1250, activeClasses: 180, departments: 8, utilization: "87%" }
   };
+
+  // Render admin dashboard if in admin view
+  if (currentView === "admin") {
+    return <AdminDashboard />;
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
